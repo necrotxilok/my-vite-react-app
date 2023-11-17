@@ -1,6 +1,6 @@
 
-import DefaultTheme from '@themes/default'
-import './colorize.css'
+import DefaultTheme from '../default'
+import './colorize.scss'
 
 const ColorizeTheme = {
 	name: "colorize",

@@ -1,5 +1,5 @@
 
-import './default.css'
+import './default.scss'
 
 const DefaultTheme = {
 	name: "default",
