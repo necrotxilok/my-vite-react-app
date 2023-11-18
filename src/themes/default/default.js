@@ -8,7 +8,7 @@ const DefaultTheme = {
 	title: "Welcome Clicker!",
 
 	// Colors
-	backgroundColor: "#222",
+	backgroundColor: "#0f315c",
 	color: "#fff",
 	primaryColor: "#1e5999",
 

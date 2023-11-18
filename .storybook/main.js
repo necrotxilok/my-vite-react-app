@@ -1,4 +1,5 @@
-/** @type { import('@storybook/react-vite').StorybookConfig } */
+const path = require('path');
+
 const config = {
   stories: ["../src/**/*.mdx", "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"],
   addons: [
@@ -14,5 +15,6 @@ const config = {
   docs: {
     autodocs: "tag",
   },
+  staticDirs: ['../public'],
 };
 export default config;

@@ -2,9 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Button from '../components/button'
 import './app.css'
 
-const theme = window.MainTheme || {}
-
 export default function App(props) {
+	const theme = window.MainTheme || {}
 	const [counter, setCounter] = useState(0);
 
 	useEffect(() => {

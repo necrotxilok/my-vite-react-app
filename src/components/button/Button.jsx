@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import './button.css'
 
-const theme = window.MainTheme || {}
-
 const Button = (props) => {
+	const theme = window.MainTheme || {}
+
 	return (
 		<button
 			className="btn"
