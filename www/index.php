@@ -1,3 +1,11 @@
+<?php 
+	if (!empty($_GET['theme'])) {
+		$themeName = $_GET['theme'];
+		if (in_array($themeName, ['default','colorize'])) {
+			$theme = $themeName;
+		}
+	}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +27,9 @@
 		window.__vite_plugin_react_preamble_installed__ = true
 	</script>	
 	<script type="module" src="http://localhost:5173/@vite/client"></script>
-	<script type="module" src="http://localhost:5173/src/themes/colorize/index.js"></script>
+	<?php if (!empty($theme)) {?>
+	<script type="module" src="http://localhost:5173/src/themes/<?=$theme?>/index.js"></script>
+	<?php } ?>
 	<script type="module" src="http://localhost:5173/src/main.jsx"></script>
 </head>
 <body>

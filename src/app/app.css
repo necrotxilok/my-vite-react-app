@@ -3,6 +3,9 @@ body {
 	background-color: #222;
 	color: #fff;
 	font-family: Arial, Helvetica, sans-serif;
+}
+
+#root {
 	position: fixed;
 	top: 0;
 	left: 0;
