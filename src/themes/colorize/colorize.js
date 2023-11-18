@@ -1,6 +1,5 @@
 
 import DefaultTheme from '../default/default'
-import './colorize.scss'
 
 const ColorizeTheme = {
 	name: "colorize",

@@ -1,6 +1,4 @@
 
-import './default.scss'
-
 const DefaultTheme = {
 	name: "default",
 
