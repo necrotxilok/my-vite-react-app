@@ -1,12 +1,12 @@
 import { themes } from '@storybook/theming'
 
 //import "../src/app/app.css"
-import defaultTheme from "../src/themes/default/default"
-import colorizeTheme from "../src/themes/colorize/colorize"
+import defaultTheme from "../src/themes/default"
+import colorizeTheme from "../src/themes/colorize"
 
 const themeDecorator = (Story, context) => {
   delete window.MainTheme
-  const bg = context.globals.backgrounds.value
+  const bg = context?.globals?.backgrounds?.value
   if (bg == defaultTheme.backgroundColor) {
     window.MainTheme = defaultTheme
   }
