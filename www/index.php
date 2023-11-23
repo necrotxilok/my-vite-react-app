@@ -1,80 +1,30 @@
 <?php 
+require_once('libs/functions.php');
+require_once('libs/vite.php');
 
-	function pr($data) {
-		echo '<pre>'; 
-		print_r($data); 
-		echo '</pre>';
+$devMode = true;
+if (!empty($_GET['mode'])) {
+	$modeName = $_GET['mode'];
+	if (strtolower($modeName) == 'prod') {
+		$devMode = false;
 	}
+}
+if (!$devMode) {
+	loadManifest();
+	$main = loadMain();
+	//prd($main);
+}
 
-	function prd($data) {
-		pr($data);
-		die();
+if (!empty($_GET['theme'])) {
+	$themeName = $_GET['theme'];
+	if (!in_array($themeName, ['default', 'colorize'])) {
+		die('Invalid theme <b>' . $themeName . '</b>!');
 	}
-
-	function getDependencies($dep) {
-		global $manifest;
-		$styles = [];
-		$scripts = [];
-		if (!empty($manifest[$dep]['file'])) {
-			if (!empty($manifest[$dep]['imports'])) {
-				foreach($manifest[$dep]['imports'] as $import) {
-					$dependencies = getDependencies($import);
-					$styles = array_merge($dependencies['styles'], $styles);
-					$scripts = array_merge($dependencies['scripts'], $scripts);
-				}
-			}
-			$scripts[] = $manifest[$dep]['file'];
-			if (!empty($manifest[$dep]['css'])) {
-				foreach($manifest[$dep]['css'] as $css) {
-					$styles[] = $css;
-				}
-			}
-		}
-		return [
-			'styles' => $styles,
-			'scripts' => $scripts
-		];
+	if (!$devMode) {
+		$theme = loadTheme($themeName);
+		//prd($theme);
 	}
-
-	$devMode = true;
-	if (!empty($_GET['mode'])) {
-		$modeName = $_GET['mode'];
-		if (strtolower($modeName) == 'prod') {
-			$devMode = false;
-			$assetsDir = __DIR__.'/assets';
-			$assetsOrigin = __DIR__.'/../dist/assets';
-			if (file_exists($assetsDir)) {
-				rmdir($assetsDir);	
-			}
-			if (file_exists($assetsOrigin)) {
-				symlink($assetsOrigin, $assetsDir);
-			}
-			$manifestFile = __DIR__.'/../dist/manifest.json';
-			if (file_exists($manifestFile)) {
-				$manifest = json_decode(file_get_contents($manifestFile), true);
-			}
-			if (empty($manifest)) {
-				die('Unable to find <b>manifest.json</b> to load scripts!');
-			}
-			if (empty($manifest['src/main.jsx'])) {
-				die('Invalid <b>manifest.json</b> to load scripts!');
-			}
-			//prd($manifest);
-			$main = getDependencies('src/main.jsx');
-			//prd($main);
-		}
-	}
-
-	if (!empty($_GET['theme'])) {
-		$themeName = $_GET['theme'];
-		if (!in_array($themeName, ['default', 'colorize'])) {
-			die('Invalid theme <b>' . $themeName . '</b>!');
-		}
-		if (!$devMode) {
-			$theme = getDependencies('src/themes/' . $themeName . '/index.js');
-			//prd($theme);
-		}
-	}
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
