@@ -1,5 +1,14 @@
 import React, { useEffect, useState } from 'react'
+
+// Import from UI Components Source
 import Button from '../components/button'
+
+// Import from UI Components Library
+/*
+import '../../dist-ui/style.css'
+import { Button } from '../../dist-ui/components'
+*/
+
 import './app.css'
 
 export default function App(props) {
