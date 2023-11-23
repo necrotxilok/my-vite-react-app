@@ -12,7 +12,7 @@ if (window.MainTheme) {
 }
 
 // Start React Application
-console.log('Starting My Pure React App...')
+console.log('Starting My Vite React App...')
 
 const container = document.getElementById('root')
 const root = createRoot(container)

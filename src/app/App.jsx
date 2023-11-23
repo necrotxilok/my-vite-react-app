@@ -13,7 +13,7 @@ import './app.css'
 
 export default function App(props) {
 	const theme = window.MainTheme || {}
-	const [counter, setCounter] = useState(0);
+	const [counter, setCounter] = useState(0)
 
 	useEffect(() => {
 		// Component Did Mount
