@@ -9,6 +9,7 @@ if (!empty($_GET['mode'])) {
 		$devMode = false;
 	}
 }
+
 if (!$devMode) {
 	loadManifest();
 	$main = loadMain();
